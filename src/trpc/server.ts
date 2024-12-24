@@ -6,7 +6,7 @@ import { cache } from "react";
 
 import { createCaller, type AppRouter } from "@/server/api/root";
 import { createTRPCContext } from "@/server/api/trpc";
-import { makeQueryClient } from "./query-client";
+import { createQueryClient } from "./query-client";
 
 const createContext = cache(async () => {
   const heads = new Headers(await headers());
@@ -17,7 +17,7 @@ const createContext = cache(async () => {
   });
 });
 
-const getQueryClient = cache(makeQueryClient);
+const getQueryClient = cache(createQueryClient);
 const caller = createCaller(createContext);
 
 export const { trpc: api, HydrateClient } = createHydrationHelpers<AppRouter>(

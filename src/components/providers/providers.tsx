@@ -1,8 +1,8 @@
 "use client";
 
+import { TRPCReactProvider } from "@/trpc/react";
 import { PropsWithChildren } from "react";
-import { TRPCProvider } from "./trpc-provider";
 
 export default function Providers({ children }: PropsWithChildren) {
-  return <TRPCProvider>{children}</TRPCProvider>;
+  return <TRPCReactProvider>{children}</TRPCReactProvider>;
 }
